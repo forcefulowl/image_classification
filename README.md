@@ -17,6 +17,10 @@ NV: 6705
 VASC: 142
 ```
 
+The format of raw data is as follows:
+
+
+
 #### Preprocessing Dataset
 
 
