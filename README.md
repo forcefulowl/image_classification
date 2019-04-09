@@ -69,7 +69,7 @@ Formally, denoting the desired underlying mapping as ![](https://latex.codecogs.
 
 **Deeper Bottleneck Architectures**
 
-<img src='bottleneck.png'>
+<img src='/img/bottleneck.png'>
 
 For each residual function ![](https://latex.codecogs.com/gif.latex?F), using a stack of 3 layers instead of 2. The three layers are ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201), ![](https://latex.codecogs.com/gif.latex?3%20%5Ctimes%203), and ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolutions, where the ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) layers are responsible for reducing and then increasing(restoring) dimensions, leaving the ![](https://latex.codecogs.com/gif.latex?3%20%5Ctimes%203) layer a bottleneck with smaller input\output dimensions.
 
@@ -77,14 +77,14 @@ For each residual function ![](https://latex.codecogs.com/gif.latex?F), using a 
 
 Comparing of Depthwise Separable Convolution and Linear Bottleneck.
 
-<img src='comparing of mobilenet v1_v2.png'>
+<img src='/img/comparing of mobilenet v1_v2.png'>
 
 1. If the manifold of interest remains non-zero volume after ReLU transformation, it corresponds to a linear transformation.
 2. ReLU is capable of preserving complete information about the input manifold, but only if the input manifold lies in a low-dimensional subspace of the input space.
 
 Using linear layers is crucial as it prevents non-linearities from destroying too much information.
 
-<img src='linear bottleneck.png'>
+<img src='/img/linear bottleneck.png'>
 
 Examples of ReLU transformations of low-dimensional manifolds embedded in higher-dimensional spaces. In these examples the initial spiral is embedded into an n-dimensional space using random matrix T followed by ReLU, and then projected back to the 2D space using $T^{-1}$. In examples above n = 2,3 result in information loss where certain points of the manifold collapse into each other, while for n=15 to 30 the transformation is highly non-convex.
 
@@ -92,11 +92,11 @@ Examples of ReLU transformations of low-dimensional manifolds embedded in higher
 
 The inverted design is considerably more memory efficient.
 
-<img src='inverted block.png'>
+<img src='/img/inverted block.png'>
 
 Comparing of bottleneck and inverted residuals.
 
-<img src='comparing of bottleneck.png'>
+<img src='/img/comparing of bottleneck.png'>
 
 #### Channel shuffle for Group Convolution
 
@@ -106,5 +106,5 @@ To address the issue, a straightforward solution is to apply channel sparse conn
 
 If we allow group convolution to obtain input data from different groups , the input and output channels will be fully related. Specifically, for the feature map generated from the previous group layer, we can first divide the channels in each group into several subgroups, then feed each group in the next layer with different subgroups. 
 
-<img src='hannel_shuffle.png'>
+<img src='/img/hannel_shuffle.png'>
 
