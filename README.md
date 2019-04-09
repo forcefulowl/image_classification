@@ -9,9 +9,9 @@
 
 Depthwise Separable Convolution is a form of factorized convolutions which factorize a standard convolution into a depthwise convolution and a ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolution called a pointwise convolution. The depthwise convolution applies a single filter to each input channel, the pointwise convolution then applies a ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolution to combine the outputs the depthwise convolution. A standard convolution both filters and combines inputs into a new set of outputs in one step. The depthwise separable convolution splits this into two layers, a separate layer for filtering and a separate layer for combining. This factorization has the effect of drastically reducing computation and model size. 
 
-A standard convolutional layer takes as input a ![](https://latex.codecogs.com/gif.latex?D_%7BF%7D%20%5Ctimes%20D_%7BF%7D%20%5Ctimes%20M) feature map F and produces a ![](https://latex.codecogs.com/gif.latex?D_%7BF%7D%20%5Ctimes%20D_%7BF%7D%20%5Ctimes%20N) feature map G where $D_{F}$ is a spatial width and height of a square input feature map, M is the number of input channels, ![](https://latex.codecogs.com/gif.latex?D_%7BG%7D) is the spatial width and height of a square output feature map and N is the number of output channel.
+A standard convolutional layer takes as input a ![](https://latex.codecogs.com/gif.latex?D_%7BF%7D%20%5Ctimes%20D_%7BF%7D%20%5Ctimes%20M) feature map F and produces a ![](https://latex.codecogs.com/gif.latex?D_%7BF%7D%20%5Ctimes%20D_%7BF%7D%20%5Ctimes%20N) feature map G where ![](https://latex.codecogs.com/gif.latex?D_%7BF%7D) is a spatial width and height of a square input feature map, M is the number of input channels, ![](https://latex.codecogs.com/gif.latex?D_%7BG%7D) is the spatial width and height of a square output feature map and N is the number of output channel.
 
-The standard convolutional layer is parameterized by convolution kernel K of size ![](https://latex.codecogs.com/gif.latex?D_%7BK%7D%20%5Ctimes%20D_%7BK%7D%20%5Ctimes%20M%20%5Ctimes%20N) where $D_{K}$ is the spatial dimension of the kernel assumed to be square and M is number of input channels and N is the number of output channels as defined previously. 
+The standard convolutional layer is parameterized by convolution kernel K of size ![](https://latex.codecogs.com/gif.latex?D_%7BK%7D%20%5Ctimes%20D_%7BK%7D%20%5Ctimes%20M%20%5Ctimes%20N) where ![](https://latex.codecogs.com/gif.latex?D_%7BK%7D) is the spatial dimension of the kernel assumed to be square and M is number of input channels and N is the number of output channels as defined previously. 
 
 Depthwise separable convolution are made up of two layers: depthwise convolutions and pointwise convolutions. Using depthwise convolutions to apply a single filter per input channel (input depth). Pointwise convolution, a simple ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolution, is then used to create a linear combination of the output of the depthwise layer.
 
@@ -33,9 +33,9 @@ Depthwise convolution has a computational cost of
 ![](https://latex.codecogs.com/gif.latex?D_%7BK%7D%20%5Ccdot%20D_%7BK%7D%20%5Ccdot%20M%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D)
 
 
-Depthwise convolution is extremely efficient relative to standard convolution. However it only filters input channels, it does not combine them to create new features. So an additional layer that computes a linear combination of the output of depthwise convolution via $1 \times 1$ convolution is needed in order to generate these new features.
+Depthwise convolution is extremely efficient relative to standard convolution. However it only filters input channels, it does not combine them to create new features. So an additional layer that computes a linear combination of the output of depthwise convolution via ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolution is needed in order to generate these new features.
 
-The combination of depthwise convolution and $1 \times 1$ (pointwise) convolution is called depthwise separable convolution which was originally introduced in.
+The combination of depthwise convolution and ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) (pointwise) convolution is called depthwise separable convolution which was originally introduced in.
 
 Depthwise separable convolutions cost:
 
@@ -43,7 +43,7 @@ Depthwise separable convolutions cost:
 ![](https://latex.codecogs.com/gif.latex?D_%7BK%7D%20%5Ccdot%20D_%7BK%7D%20%5Ccdot%20M%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D%20&plus;%20M%20%5Ccdot%20N%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D)
 
 
-which is the sum of the depthwise and $1 \times 1$ pointwise convolutions.
+which is the sum of the depthwise and ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) pointwise convolutions.
 
 By expressing convolution as two step process of filtering and combining, there's a reduction in computation of
 
@@ -65,13 +65,13 @@ Someone address the degradation problem by introducing a *deep residual learning
 
 ![](C:\Users\gavin\Desktop\img_classification\residual block.png)
 
-Formally, denoting the desired underlying mapping as $H(x)$, it let the stacked nonlinear layers fit another mapping of $F(X):=H(x) - x$. The original mapping is recast into $F(x) + x$. The formulation of $F(x) + x$ can be realized by feedforward neural networks with 'shortcut connections' are those skipping one or more layers, the shortcut connections simply perform *identity* mapping, and their outputs are added to the outputs of the stacked layers. Identity shortcut connections add neither extra parameter nor computational complexity.
+Formally, denoting the desired underlying mapping as ![](https://latex.codecogs.com/gif.latex?H%28x%29), it let the stacked nonlinear layers fit another mapping of ![](https://latex.codecogs.com/gif.latex?F%28X%29%3A%3DH%28x%29%20-%20x). The original mapping is recast into ![](https://latex.codecogs.com/gif.latex?F%28x%29%20&plus;%20x). The formulation of ![](https://latex.codecogs.com/gif.latex?F%28x%29%20&plus;%20x) can be realized by feedforward neural networks with 'shortcut connections' are those skipping one or more layers, the shortcut connections simply perform *identity* mapping, and their outputs are added to the outputs of the stacked layers. Identity shortcut connections add neither extra parameter nor computational complexity.
 
 **Deeper Bottleneck Architectures**
 
 ![](C:\Users\gavin\Desktop\img_classification\bottleneck.png)
 
-For each residual function $F$, using a stack of 3 layers instead of 2. The three layers are $1 \times 1$, $3 \times 3$, and $1 \times 1$ convolutions, where the $1 \times 1$ layers are responsible for reducing and then increasing(restoring) dimensions, leaving the $3 \times 3$ layer a bottleneck with smaller input\output dimensions.
+For each residual function ![](https://latex.codecogs.com/gif.latex?F), using a stack of 3 layers instead of 2. The three layers are ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201), ![](https://latex.codecogs.com/gif.latex?3%20%5Ctimes%203), and ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolutions, where the ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) layers are responsible for reducing and then increasing(restoring) dimensions, leaving the ![](https://latex.codecogs.com/gif.latex?3%20%5Ctimes%203) layer a bottleneck with smaller input\output dimensions.
 
 **Linear Bottlenecks**
 
@@ -100,9 +100,9 @@ Comparing of bottleneck and inverted residuals.
 
 #### Channel shuffle for Group Convolution
 
-Modern convolutional neural networks usually consist of repeated building blocks with the same structure, such as *Xception* and *ResNeXt* introduce efficient depthwise separable convolutions or group convolutions into the building blocks to strike an excellent trade-off between representation capability and computational cost. However, both designs do not fully take the $1 \times 1$ convolutions into account, which require considerable complexity. For example, in ResNeXt only $3 \times 3$ layers are equipped with group convolutions. As a result, for each residual unit in ResNeXt the pointwise convolutions occupy 93.4% multiplication-adds( cardinality = 32 as suggested in). In tiny networks, expensive pointwise convolutions result in limited number of channels to meet the complexity constraint, which might significantly damage the accuracy.
+Modern convolutional neural networks usually consist of repeated building blocks with the same structure, such as *Xception* and *ResNeXt* introduce efficient depthwise separable convolutions or group convolutions into the building blocks to strike an excellent trade-off between representation capability and computational cost. However, both designs do not fully take the ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolutions into account, which require considerable complexity. For example, in ResNeXt only ![](https://latex.codecogs.com/gif.latex?3%20%5Ctimes%203) layers are equipped with group convolutions. As a result, for each residual unit in ResNeXt the pointwise convolutions occupy 93.4% multiplication-adds( cardinality = 32 as suggested in). In tiny networks, expensive pointwise convolutions result in limited number of channels to meet the complexity constraint, which might significantly damage the accuracy.
 
-To address the issue, a straightforward solution is to apply channel sparse connections, for example group convolutions, also on $1 \times 1$ layers.By ensuring that each convolution operates only on the corresponding input channel group, group convolution significantly reduces computation cost. However, if multiple group convolutions stack together, there is one side effect: outputs from a certain channel are only derived from a small fraction of input channels. It is clear that outputs from a certain group only relate to the inputs within the group. This property blocks information flow between channel groups and weakens representation
+To address the issue, a straightforward solution is to apply channel sparse connections, for example group convolutions, also on ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) layers.By ensuring that each convolution operates only on the corresponding input channel group, group convolution significantly reduces computation cost. However, if multiple group convolutions stack together, there is one side effect: outputs from a certain channel are only derived from a small fraction of input channels. It is clear that outputs from a certain group only relate to the inputs within the group. This property blocks information flow between channel groups and weakens representation
 
 If we allow group convolution to obtain input data from different groups , the input and output channels will be fully related. Specifically, for the feature map generated from the previous group layer, we can first divide the channels in each group into several subgroups, then feed each group in the next layer with different subgroups. 
 
