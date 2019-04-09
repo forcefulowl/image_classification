@@ -195,3 +195,13 @@ If we allow group convolution to obtain input data from different groups , the i
 
 <img src='/img/channel_shuffle.png'>
 
+
+## Result
+
+| tricks using in model |  values of parameters | training time |accuracy |
+| ------ | ------ | ------ |
+| depthwise separable conv | batch_size=32, lr-1 | 2:02:35.984546 |334ms/step - loss: 0.0496 - acc: 0.9844 - val_loss: 0.9146 - val_acc: 0.8437|
+| depthwise separable conv | 短文本 | 中等文本 |
+| depthwise separable conv | 短文本 | 中等文本 |
+| depthwise separable conv | 短文本 | 中等文本 |
+
