@@ -7,13 +7,13 @@
 
 #### Depthwise Separable Convolution
 
-Depthwise Separable Convolution is a form of factorized convolutions which factorize a standard convolution into a depthwise convolution and a $1 \times 1$ convolution called a pointwise convolution. The depthwise convolution applies a single filter to each input channel, the pointwise convolution then applies a $1 \times 1$ convolution to combine the outputs the depthwise convolution. A standard convolution both filters and combines inputs into a new set of outputs in one step. The depthwise separable convolution splits this into two layers, a separate layer for filtering and a separate layer for combining. This factorization has the effect of drastically reducing computation and model size. 
+Depthwise Separable Convolution is a form of factorized convolutions which factorize a standard convolution into a depthwise convolution and a ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolution called a pointwise convolution. The depthwise convolution applies a single filter to each input channel, the pointwise convolution then applies a ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolution to combine the outputs the depthwise convolution. A standard convolution both filters and combines inputs into a new set of outputs in one step. The depthwise separable convolution splits this into two layers, a separate layer for filtering and a separate layer for combining. This factorization has the effect of drastically reducing computation and model size. 
 
-A standard convolutional layer takes as input a $D_{F} \times D_{F} \times M$ feature map F and produces a $D_{F} \times D_{F} \times N$ feature map G where $D_{F}$ is a spatial width and height of a square input feature map, M is the number of input channels, $D_{G}$ is the spatial width and height of a square output feature map and N is the number of output channel.
+A standard convolutional layer takes as input a ![](https://latex.codecogs.com/gif.latex?D_%7BF%7D%20%5Ctimes%20D_%7BF%7D%20%5Ctimes%20M) feature map F and produces a ![](https://latex.codecogs.com/gif.latex?D_%7BF%7D%20%5Ctimes%20D_%7BF%7D%20%5Ctimes%20N) feature map G where $D_{F}$ is a spatial width and height of a square input feature map, M is the number of input channels, ![](https://latex.codecogs.com/gif.latex?D_%7BG%7D) is the spatial width and height of a square output feature map and N is the number of output channel.
 
-The standard convolutional layer is parameterized by convolution kernel K of size $D_{K} \times D_{K} \times M \times N$ where $D_{K}$ is the spatial dimension of the kernel assumed to be square and M is number of input channels and N is the number of output channels as defined previously. 
+The standard convolutional layer is parameterized by convolution kernel K of size ![](https://latex.codecogs.com/gif.latex?D_%7BK%7D%20%5Ctimes%20D_%7BK%7D%20%5Ctimes%20M%20%5Ctimes%20N) where $D_{K}$ is the spatial dimension of the kernel assumed to be square and M is number of input channels and N is the number of output channels as defined previously. 
 
-Depthwise separable convolution are made up of two layers: depthwise convolutions and pointwise convolutions. Using depthwise convolutions to apply a single filter per input channel (input depth). Pointwise convolution, a simple $1 \times 1$ convolution, is then used to create a linear combination of the output of the depthwise layer.
+Depthwise separable convolution are made up of two layers: depthwise convolutions and pointwise convolutions. Using depthwise convolutions to apply a single filter per input channel (input depth). Pointwise convolution, a simple ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolution, is then used to create a linear combination of the output of the depthwise layer.
 
 Depthwise convolution with one filter per input channel (input depth) can be written as:
 
@@ -21,14 +21,18 @@ Depthwise convolution with one filter per input channel (input depth) can be wri
 ![](https://latex.codecogs.com/gif.latex?%5Csum_%7Bi%2Cj%7D%20K_%7Bi%2Cj%2Cm%7D%20%5Ccdot%20F_%7Bk&plus;i-1%2Cl&plus;j-1%2Cm%7D)
 
 
-where K is the depthwise convolutional kernel of size $D_{K} \times D_{K} \times M$ where the $m_{th}$ filter in K is applied to the $m_{th}$ channel in F to produce the $m_{th}$ channel of the filtered output feature map G.
+where K is the depthwise convolutional kernel of size ![](https://latex.codecogs.com/gif.latex?D_%7BK%7D%20%5Ctimes%20D_%7BK%7D%20%5Ctimes%20M) where the ![](https://latex.codecogs.com/gif.latex?m_%7Bth%7D) filter in K is applied to the ![](https://latex.codecogs.com/gif.latex?m_%7Bth%7D) channel in F to produce the ![](https://latex.codecogs.com/gif.latex?m_%7Bth%7D) channel of the filtered output feature map G.
 
 
 ![](C:\Users\gavin\Desktop\img_classification\depthwise separable convolution.png)
 
 
 Depthwise convolution has a computational cost of
+
+
 ![](https://latex.codecogs.com/gif.latex?D_%7BK%7D%20%5Ccdot%20D_%7BK%7D%20%5Ccdot%20M%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D)
+
+
 Depthwise convolution is extremely efficient relative to standard convolution. However it only filters input channels, it does not combine them to create new features. So an additional layer that computes a linear combination of the output of depthwise convolution via $1 \times 1$ convolution is needed in order to generate these new features.
 
 The combination of depthwise convolution and $1 \times 1$ (pointwise) convolution is called depthwise separable convolution which was originally introduced in.
