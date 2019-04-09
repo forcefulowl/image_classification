@@ -169,7 +169,7 @@ By expressing convolution as two step process of filtering and combining, there'
 | batch_size=32, lr=1, epochs=100 | 2:02:35.984546 |loss: 0.0496 - acc: 0.9844 - val_loss: 0.9146 - val_acc: 0.8437|
 | batch_size=32, lr=0.1, epochs=100 | 2:02:24.674883 |loss: 0.0167 - acc: 0.9938 - val_loss: 0.8037 - val_acc: 0.8592|
 | batch_size=32, lr=0.01, epochs=100 | 2:00:44.432700 |loss: 0.1524 - acc: 0.9481 - val_loss: 0.5204 - val_acc: 0.8420|
-| batch_size=32, lr=0.001, epochs=100 | time: 1:59:59.366265 | loss: 0.5579 - acc: 0.8000 - val_loss: 0.6101 - val_acc: 0.7804 |
+| batch_size=32, lr=0.001, epochs=100 | 1:59:59.366265 | loss: 0.5579 - acc: 0.8000 - val_loss: 0.6101 - val_acc: 0.7804 |
 | batch_size=16, lr=0.1, epochs=100 | 2:11:34.221687 |loss: 0.0326 - acc: 0.9896 - val_loss: 0.8072 - val_acc: 0.8539|
 | batch_size=8, lr=0.1, epochs=100 | 2:29:13.814567 |loss: 0.0488 - acc: 0.9836 - val_loss: 0.8756 - val_acc: 0.8473|
 
@@ -190,6 +190,14 @@ Someone address the degradation problem by introducing a *deep residual learning
 <img src='/img/residual block.png'>
 
 Formally, denoting the desired underlying mapping as ![](https://latex.codecogs.com/gif.latex?H%28x%29), it let the stacked nonlinear layers fit another mapping of ![](https://latex.codecogs.com/gif.latex?F%28X%29%3A%3DH%28x%29%20-%20x). The original mapping is recast into ![](https://latex.codecogs.com/gif.latex?F%28x%29%20&plus;%20x). The formulation of ![](https://latex.codecogs.com/gif.latex?F%28x%29%20&plus;%20x) can be realized by feedforward neural networks with 'shortcut connections' are those skipping one or more layers, the shortcut connections simply perform *identity* mapping, and their outputs are added to the outputs of the stacked layers. Identity shortcut connections add neither extra parameter nor computational complexity.
+
+### Result
+
+|  values of parameters | training time | result |
+| ------ | ------ | ------ |
+| batch_size=8, lr=1, epochs=100 | 2:47:20.486248 |loss: 0.3449 - acc: 0.8718 - val_loss: 1.1156 - val_acc: 0.7741|
+| batch_size=8, lr=0.01, epochs=200 | 5:41:32.741626 |loss: 0.0190 - acc: 0.9937 - val_loss: 1.1468 - val_acc: 0.8460|
+
 
 **Deeper Bottleneck Architectures**
 
