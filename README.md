@@ -1,7 +1,7 @@
 
 # image_classification
 
-## Data
+## Data/Preprocessing Data
 
 The input data are dermoscopic lesion images in JPEG format.
 
@@ -19,9 +19,33 @@ VASC: 142
 
 The format of raw data is as follows:
 
+<img src='/img/raw_data.png'>
 
+And the format of label is as follows:
 
-#### Preprocessing Dataset
+<img src='/img/raw_label.png'>
+
+Directly loading all of the data into memory.
+
+```
+def read_img(img_name):
+    im = Image.open(img_name).convert('RGB')
+    data = np.array(im)
+    return data
+
+images = []
+
+for fn in os.listdir('C:\\Users\gavin\Desktop\ISIC2018_Task3_Training_Input'):
+    if fn.endswith('.jpg'):
+        fd = os.path.join('C:\\Users\gavin\Desktop\ISIC2018_Task3_Training_Input', fn)
+        images.append(read_img(fd))
+```
+
+That is so memory consuming, even the most state-of-the art configuration won't have enough memory space to process the data the way I used to do it. Meanwhile, the number of training data is not large enough, Data Augumentation is the next step to achieve.
+
+Firstly, chaning the format of the raw data.
+
+<img src='/img/new_data.png'>
 
 
 
