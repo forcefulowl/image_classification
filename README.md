@@ -155,8 +155,12 @@ By expressing convolution as two step process of filtering and combining, there'
 | DWConv2D/s=2 | 3 * 3 * 256dw | 28 * 28 * 256 |
 | Conv2D/s=1 | 1 * 1 * 256 * 512 | 14 * 14 * 256 |
 | 5 * DWConv2D, Conv2D/s=1 | 3 * 3 * 512dw, 1 * 1 * 512 * 512 | 14 * 14 * 512 |
-| DWConv2D/s=2 | 短文本 | 中等文本 |
-| Conv2D/s=1 | 短文本 | 中等文本 |
+| DWConv2D/s=2 | 3 * 3 * 512dw | 14 * 14 * 512 |
+| Conv2D/s=1 | 1 * 1 * 512 * 1024 | 7 * 7 * 512 |
+| DWConv2D/s=1 | 3 * 3 * 1024dw | 7 * 7 * 1024 |
+| Conv2D/s=1 | 1 * 1 * 1024 * 1024 | 7 * 7 * 1024 |
+| FC |  |  |
+
 
 
 
