@@ -159,7 +159,7 @@ By expressing convolution as two step process of filtering and combining, there'
 | Conv2D/s=1 | 1 * 1 * 512 * 1024 | 7 * 7 * 512 |
 | DWConv2D/s=1 | 3 * 3 * 1024dw | 7 * 7 * 1024 |
 | Conv2D/s=1 | 1 * 1 * 1024 * 1024 | 7 * 7 * 1024 |
-| FC |  |  |
+| Pooling/FC |  |  |
 
 
 
@@ -212,6 +212,30 @@ The inverted design is considerably more memory efficient.
 Comparing of bottleneck and inverted residuals.
 
 <img src='/img/comparing of bottleneck.png'>
+
+
+| Type/Strike |  Filter shape | Input Size |
+| ------ | ------ | ------ | 
+| Conv2D/s=2 | 3 * 3 * 32 | 224 * 224 * 3 |
+| DWConv2D/s=1 | 3 * 3 * 32dw | 112 * 112 * 32 |
+| Conv2D/s=1 | 1 * 1 * 32 * 64 | 112 * 112 * 32 |
+| DWConv2D/s=2 | 3 * 3 * 64dw | 112 * 112 * 64 |
+| Conv2D/s=1 | 1 * 1 * 64 * 128 | 56 * 56 * 64 |
+| DWConv2D/s=1 | 3 * 3 * 128dw | 56 * 56 * 128 |
+| Conv2D/s=1 | 1 * 1 * 128 * 128 | 56 * 56 * 128 |
+| DWConv2D/s=2 | 3 * 3 * 128dw | 56 * 56 * 128 |
+| Conv2D/s=1 | 1 * 1 * 128 * 256 | 28 * 28 * 256 |
+| DWConv2D/s=1 | 3 * 3 * 256dw | 28 * 28 * 256 |
+| Conv2D/s=1 | 1 * 1 * 256 * 256 | 28 * 28 * 256 |
+| DWConv2D/s=2 | 3 * 3 * 256dw | 28 * 28 * 256 |
+| Conv2D/s=1 | 1 * 1 * 256 * 512 | 14 * 14 * 256 |
+| 5 * DWConv2D, Conv2D/s=1 | 3 * 3 * 512dw, 1 * 1 * 512 * 512 | 14 * 14 * 512 |
+| DWConv2D/s=2 | 3 * 3 * 512dw | 14 * 14 * 512 |
+| Conv2D/s=1 | 1 * 1 * 512 * 1024 | 7 * 7 * 512 |
+| DWConv2D/s=1 | 3 * 3 * 1024dw | 7 * 7 * 1024 |
+| Conv2D/s=1 | 1 * 1 * 1024 * 1024 | 7 * 7 * 1024 |
+| Pooling/FC |  |  |
+
 
 #### Channel shuffle for Group Convolution
 
