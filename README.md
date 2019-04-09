@@ -24,7 +24,7 @@ Depthwise convolution with one filter per input channel (input depth) can be wri
 where K is the depthwise convolutional kernel of size ![](https://latex.codecogs.com/gif.latex?D_%7BK%7D%20%5Ctimes%20D_%7BK%7D%20%5Ctimes%20M) where the ![](https://latex.codecogs.com/gif.latex?m_%7Bth%7D) filter in K is applied to the ![](https://latex.codecogs.com/gif.latex?m_%7Bth%7D) channel in F to produce the ![](https://latex.codecogs.com/gif.latex?m_%7Bth%7D) channel of the filtered output feature map G.
 
 
-![](C:\Users\gavin\Desktop\img_classification\depthwise separable convolution.png)
+![](C:\img\img_classification\depthwise separable convolution.png)
 
 
 Depthwise convolution has a computational cost of
@@ -59,7 +59,7 @@ Deep convolutional neural networks have led to a series of breakthroughs for ima
 
 Driven by the significance of depth, a question arises: *Is learning better networks as easy as stacking more layers?*  An obstacle to answering this question was the notorious problem of vanishing/exploding gradients, which hamper convergence from the beginning. When deeper networks are able to start converging, a degradation problem has been exposed: with the network depth increasing ,accuracy gets saturated ( which might be unsurprising) and then degrades rapidly. Unexpectedly, such degradation is not caused by overfitting, and adding more layers to a suitably deep model leads to higher training error.
 
-![](C:\Users\gavin\Desktop\img_classification\gradient_vanishing.png)
+![](img\gradient_vanishing.png)
 
 Someone address the degradation problem by introducing a *deep residual learning* framework. In stead of hoping each few stacked layers directly fit a desired underlying mapping, we can let these layers fit a residual mapping. 
 
