@@ -43,10 +43,53 @@ for fn in os.listdir('C:\\Users\gavin\Desktop\ISIC2018_Task3_Training_Input'):
 
 That is so memory consuming, even the most state-of-the art configuration won't have enough memory space to process the data the way I used to do it. Meanwhile, the number of training data is not large enough, Data Augumentation is the next step to achieve.
 
-Firstly, chaning the format of the raw data.
+Firstly, chaning the format of the raw data using `reformat_data.py`.
 
 <img src='/img/new_data.png'>
 
+Then doing data augumentation.
+
+```
+data_datagen = ImageDataGenerator(
+    rescale=1./255,
+    horizontal_flip=True,
+    fill_mode="nearest",
+    zoom_range=0.3,
+    width_shift_range=0.3,
+    height_shift_range=0.3,
+    rotation_range=30,
+    validation_split=0.3)
+```
+
+`horizontal_flip`: Randomly flip inputs horizontally.
+`zoom_range`: Range for random zoom.
+`width_shift_range`: fraction of total width.
+`height_shift_range`: fraction of total height.
+`rotation_range`: Degree range for random rotations.
+`validation_split`: Split the dataset into 70% train and 30% val.
+
+Then achieve ImageGenerator:
+
+```
+train_generator = train_datagen.flow_from_directory(
+    data_dir,
+    target_size=(img_width, img_height),
+    batch_size=batch_size,
+    class_mode="categorical",
+    subset='training',
+    shuffle=True)
+
+validation_generator = train_datagen.flow_from_directory(
+    data_dir,
+    target_size=(img_width, img_height),
+    batch_size=batch_size,
+    class_mode="categorical",
+    subset='validation',
+    shuffle=True)
+```
+
+
+## Model/ Tricks to imporve performance on mobile device
 
 
 #### Depthwise Separable Convolution
