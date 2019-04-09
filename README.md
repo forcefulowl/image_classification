@@ -1,4 +1,4 @@
-![my equation](https://latex.codecogs.com/gif.latex?%5Csum_%7Bi%2Cj%7D%20K_%7Bi%2Cj%2Cm%7D%20%5Ccdot%20F_%7Bk&plus;i-1%2Cl&plus;j-1%2Cm%7D)
+
 # image_classification
 
 #### Preprocessing Dataset
@@ -16,32 +16,23 @@ The standard convolutional layer is parameterized by convolution kernel K of siz
 Depthwise separable convolution are made up of two layers: depthwise convolutions and pointwise convolutions. Using depthwise convolutions to apply a single filter per input channel (input depth). Pointwise convolution, a simple $1 \times 1$ convolution, is then used to create a linear combination of the output of the depthwise layer.
 
 Depthwise convolution with one filter per input channel (input depth) can be written as:
-$$
-\sum_{i,j} K_{i,j,m} \cdot F_{k+i-1,l+j-1,m}
-$$
+![](https://latex.codecogs.com/gif.latex?%5Csum_%7Bi%2Cj%7D%20K_%7Bi%2Cj%2Cm%7D%20%5Ccdot%20F_%7Bk&plus;i-1%2Cl&plus;j-1%2Cm%7D)
 where K is the depthwise convolutional kernel of size $D_{K} \times D_{K} \times M$ where the $m_{th}$ filter in K is applied to the $m_{th}$ channel in F to produce the $m_{th}$ channel of the filtered output feature map G.
 
 ![](C:\Users\gavin\Desktop\img_classification\depthwise separable convolution.png)
 
 Depthwise convolution has a computational cost of
-$$
-D_{K} \cdot D_{K} \cdot M \cdot D_{F} \cdot D_{F}
-$$
+![](https://latex.codecogs.com/gif.latex?D_%7BK%7D%20%5Ccdot%20D_%7BK%7D%20%5Ccdot%20M%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D)
 Depthwise convolution is extremely efficient relative to standard convolution. However it only filters input channels, it does not combine them to create new features. So an additional layer that computes a linear combination of the output of depthwise convolution via $1 \times 1$ convolution is needed in order to generate these new features.
 
 The combination of depthwise convolution and $1 \times 1$ (pointwise) convolution is called depthwise separable convolution which was originally introduced in.
 
 Depthwise separable convolutions cost:
-$$
-D_{K} \cdot D_{K} \cdot M \cdot D_{F} \cdot D_{F} + M \cdot N \cdot D_{F} \cdot D_{F}
-$$
+![](https://latex.codecogs.com/gif.latex?D_%7BK%7D%20%5Ccdot%20D_%7BK%7D%20%5Ccdot%20M%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D%20&plus;%20M%20%5Ccdot%20N%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D)
 which is the sum of the depthwise and $1 \times 1$ pointwise convolutions.
 
 By expressing convolution as two step process of filtering and combining, there's a reduction in computation of
-$$
-\frac{D_{K} \cdot D_{K} \cdot M \cdot D_{F} \cdot D_{F} + M \cdot N \cdot D_{F} \cdot D_{F}}{D_{K} \cdot D_{K} \cdot M \cdot N \cdot D_{F} \cdot D_{F}}
-= \frac{1}{N} + \frac{1}{D^2_{K}}
-$$
+![](https://latex.codecogs.com/gif.latex?%5Cfrac%7BD_%7BK%7D%20%5Ccdot%20D_%7BK%7D%20%5Ccdot%20M%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D%20&plus;%20M%20%5Ccdot%20N%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D%7D%7BD_%7BK%7D%20%5Ccdot%20D_%7BK%7D%20%5Ccdot%20M%20%5Ccdot%20N%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D%7D%20%3D%20%5Cfrac%7B1%7D%7BN%7D%20&plus;%20%5Cfrac%7B1%7D%7BD%5E2_%7BK%7D%7D)
 
 
 #### Inverted Residuals and Linear Bottlenecks
