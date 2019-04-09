@@ -1,4 +1,4 @@
-![my equation](https://latex.codecogs.com/gif.download?%5Csum_%7Bi%2Cj%7D%20K_%7Bi%2Cj%2Cm%7D%20%5Ccdot%20F_%7Bk+i-1%2Cl+j-1%2Cm%7D)
+![my equation](https://latex.codecogs.com/gif.latex?%5Csum_%7Bi%2Cj%7D%20K_%7Bi%2Cj%2Cm%7D%20%5Ccdot%20F_%7Bk&plus;i-1%2Cl&plus;j-1%2Cm%7D)
 # image_classification
 
 #### Preprocessing Dataset
