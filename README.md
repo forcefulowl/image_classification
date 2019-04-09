@@ -92,7 +92,7 @@ validation_generator = train_datagen.flow_from_directory(
 ## Model/ Tricks to imporve performance on mobile device
 
 
-#### Depthwise Separable Convolution
+### Depthwise Separable Convolution
 
 Depthwise Separable Convolution is a form of factorized convolutions which factorize a standard convolution into a depthwise convolution and a ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolution called a pointwise convolution. The depthwise convolution applies a single filter to each input channel, the pointwise convolution then applies a ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolution to combine the outputs the depthwise convolution. A standard convolution both filters and combines inputs into a new set of outputs in one step. The depthwise separable convolution splits this into two layers, a separate layer for filtering and a separate layer for combining. This factorization has the effect of drastically reducing computation and model size. 
 
@@ -162,7 +162,16 @@ By expressing convolution as two step process of filtering and combining, there'
 | Pooling/FC |  |  |
 
 
+#### Result
 
+|  values of parameters | training time | result |
+| ------ | ------ | ------ |
+| batch_size=32, lr=1, epochs=100 | 2:02:35.984546 |loss: 0.0496 - acc: 0.9844 - val_loss: 0.9146 - val_acc: 0.8437|
+| batch_size=32, lr=0.1, epochs=100 | 2:02:24.674883 |loss: 0.0167 - acc: 0.9938 - val_loss: 0.8037 - val_acc: 0.8592|
+| batch_size=32, lr=0.01, epochs=100 | 2:00:44.432700 |loss: 0.1524 - acc: 0.9481 - val_loss: 0.5204 - val_acc: 0.8420|
+| batch_size=32, lr=0.001, epochs=100 | time: 1:59:59.366265 | loss: 0.5579 - acc: 0.8000 - val_loss: 0.6101 - val_acc: 0.7804 |
+| batch_size=16, lr=0.1, epochs=100 | 2:11:34.221687 |loss: 0.0326 - acc: 0.9896 - val_loss: 0.8072 - val_acc: 0.8539|
+| batch_size=8, lr=0.1, epochs=100 | 2:29:13.814567 |loss: 0.0488 - acc: 0.9836 - val_loss: 0.8756 - val_acc: 0.8473|
 
 
 
@@ -214,6 +223,15 @@ Comparing of bottleneck and inverted residuals.
 <img src='/img/comparing of bottleneck.png'>
 
 
+#### Result
+
+|  values of parameters | training time | result |
+| ------ | ------ | ------ |
+| batch_size=32, lr=1, epochs=100 | 2:01:26.619140 |loss: 0.0795 - acc: 0.9733 - val_loss: 1.6232 - val_acc: 0.7831|
+| batch_size=32, lr=0.1, epochs=100 | 2:01:06.484069 |loss: 0.0183 - acc: 0.9941 - val_loss: 1.1009 - val_acc: 0.8404|
+| batch_size=32, lr=0.01, epochs=100 | 2:01:09.871235 |loss: 0.1427 - acc: 0.9521 - val_loss: 0.5747 - val_acc: 0.8397|
+
+
 #### Channel shuffle for Group Convolution
 
 Modern convolutional neural networks usually consist of repeated building blocks with the same structure, such as *Xception* and *ResNeXt* introduce efficient depthwise separable convolutions or group convolutions into the building blocks to strike an excellent trade-off between representation capability and computational cost. However, both designs do not fully take the ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolutions into account, which require considerable complexity. For example, in ResNeXt only ![](https://latex.codecogs.com/gif.latex?3%20%5Ctimes%203) layers are equipped with group convolutions. As a result, for each residual unit in ResNeXt the pointwise convolutions occupy 93.4% multiplication-adds( cardinality = 32 as suggested in). In tiny networks, expensive pointwise convolutions result in limited number of channels to meet the complexity constraint, which might significantly damage the accuracy.
@@ -225,12 +243,9 @@ If we allow group convolution to obtain input data from different groups , the i
 <img src='/img/channel_shuffle.png'>
 
 
-## Result
+|  values of parameters | training time | result |
+| ------ | ------ | ------ |
+| batch_size=16, lr=0.1, epochs=200 | 4:40:04.491828 |loss: 0.2473 - acc: 0.9078 - val_loss: 0.8477 - val_acc: 0.7829|
 
-| tricks using in model |  values of parameters | training time |accuracy |
-| ------ | ------ | ------ | ------ |
-| depthwise separable conv | batch_size=32, lr-1 | 2:02:35.984546 |7|
-| depthwise separable conv | 短文本 | 中等文本 |
-| depthwise separable conv | 短文本 | 中等文本 |
-| depthwise separable conv | 短文本 | 中等文本 |
+
 
