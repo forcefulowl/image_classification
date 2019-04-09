@@ -138,6 +138,30 @@ By expressing convolution as two step process of filtering and combining, there'
 ![](https://latex.codecogs.com/gif.latex?%5Cfrac%7BD_%7BK%7D%20%5Ccdot%20D_%7BK%7D%20%5Ccdot%20M%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D%20&plus;%20M%20%5Ccdot%20N%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D%7D%7BD_%7BK%7D%20%5Ccdot%20D_%7BK%7D%20%5Ccdot%20M%20%5Ccdot%20N%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D%7D%20%3D%20%5Cfrac%7B1%7D%7BN%7D%20&plus;%20%5Cfrac%7B1%7D%7BD%5E2_%7BK%7D%7D)
 
 
+
+| Type/Strike |  Filter shape | Input Size |
+| ------ | ------ | ------ | 
+| Conv2D/s=2 | 3 * 3 * 32 | 224 * 224 * 3 |
+| DWConv2D/s=1 | 3 * 3 * 32dw | 112 * 112 * 32 |
+| Conv2D/s=1 | 1 * 1 * 32 * 64 | 112 * 112 * 32 |
+| DWConv2D/s=2 | 3 * 3 * 64dw | 112 * 112 * 64 |
+| Conv2D/s=1 | 1 * 1 * 64 * 128 | 56 * 56 * 64 |
+| DWConv2D/s=1 | 3 * 3 * 128dw | 56 * 56 * 128 |
+| Conv2D/s=1 | 1 * 1 * 128 * 128 | 56 * 56 * 128 |
+| DWConv2D/s=2 | 3 * 3 * 128dw | 56 * 56 * 128 |
+| Conv2D/s=1 | 1 * 1 * 128 * 256 | 28 * 28 * 256 |
+| DWConv2D/s=1 | 3 * 3 * 256dw | 28 * 28 * 256 |
+| Conv2D/s=1 | 1 * 1 * 256 * 256 | 28 * 28 * 256 |
+| DWConv2D/s=2 | 3 * 3 * 256dw | 28 * 28 * 256 |
+| Conv2D/s=1 | 1 * 1 * 256 * 512 | 14 * 14 * 256 |
+| 5 * DWConv2D, Conv2D/s=1 | 3 * 3 * 512dw, 1 * 1 * 512 * 512 | 14 * 14 * 512 |
+| DWConv2D/s=2 | 短文本 | 中等文本 |
+| Conv2D/s=1 | 短文本 | 中等文本 |
+
+
+
+
+
 #### Inverted Residuals and Linear Bottlenecks
 
 **Deep Residual Learning for Image Recognition**
