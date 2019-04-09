@@ -59,17 +59,17 @@ Deep convolutional neural networks have led to a series of breakthroughs for ima
 
 Driven by the significance of depth, a question arises: *Is learning better networks as easy as stacking more layers?*  An obstacle to answering this question was the notorious problem of vanishing/exploding gradients, which hamper convergence from the beginning. When deeper networks are able to start converging, a degradation problem has been exposed: with the network depth increasing ,accuracy gets saturated ( which might be unsurprising) and then degrades rapidly. Unexpectedly, such degradation is not caused by overfitting, and adding more layers to a suitably deep model leads to higher training error.
 
-![](img\gradient_vanishing.png)
+<img src='/img/gradient_vanishing.png'>
 
 Someone address the degradation problem by introducing a *deep residual learning* framework. In stead of hoping each few stacked layers directly fit a desired underlying mapping, we can let these layers fit a residual mapping. 
 
-![](C:\Users\gavin\Desktop\img_classification\residual block.png)
+<img src='/img/residual block.png'>
 
 Formally, denoting the desired underlying mapping as ![](https://latex.codecogs.com/gif.latex?H%28x%29), it let the stacked nonlinear layers fit another mapping of ![](https://latex.codecogs.com/gif.latex?F%28X%29%3A%3DH%28x%29%20-%20x). The original mapping is recast into ![](https://latex.codecogs.com/gif.latex?F%28x%29%20&plus;%20x). The formulation of ![](https://latex.codecogs.com/gif.latex?F%28x%29%20&plus;%20x) can be realized by feedforward neural networks with 'shortcut connections' are those skipping one or more layers, the shortcut connections simply perform *identity* mapping, and their outputs are added to the outputs of the stacked layers. Identity shortcut connections add neither extra parameter nor computational complexity.
 
 **Deeper Bottleneck Architectures**
 
-![](C:\Users\gavin\Desktop\img_classification\bottleneck.png)
+<img src='bottleneck.png'>
 
 For each residual function ![](https://latex.codecogs.com/gif.latex?F), using a stack of 3 layers instead of 2. The three layers are ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201), ![](https://latex.codecogs.com/gif.latex?3%20%5Ctimes%203), and ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolutions, where the ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) layers are responsible for reducing and then increasing(restoring) dimensions, leaving the ![](https://latex.codecogs.com/gif.latex?3%20%5Ctimes%203) layer a bottleneck with smaller input\output dimensions.
 
@@ -77,14 +77,14 @@ For each residual function ![](https://latex.codecogs.com/gif.latex?F), using a 
 
 Comparing of Depthwise Separable Convolution and Linear Bottleneck.
 
-![](C:\Users\gavin\Desktop\img_classification\comparing of mobilenet v1_v2.png)
+<img src='comparing of mobilenet v1_v2.png'>
 
 1. If the manifold of interest remains non-zero volume after ReLU transformation, it corresponds to a linear transformation.
 2. ReLU is capable of preserving complete information about the input manifold, but only if the input manifold lies in a low-dimensional subspace of the input space.
 
 Using linear layers is crucial as it prevents non-linearities from destroying too much information.
 
-![](C:\Users\gavin\Desktop\img_classification\linear bottleneck.png)
+<img src='linear bottleneck.png'>
 
 Examples of ReLU transformations of low-dimensional manifolds embedded in higher-dimensional spaces. In these examples the initial spiral is embedded into an n-dimensional space using random matrix T followed by ReLU, and then projected back to the 2D space using $T^{-1}$. In examples above n = 2,3 result in information loss where certain points of the manifold collapse into each other, while for n=15 to 30 the transformation is highly non-convex.
 
@@ -92,11 +92,11 @@ Examples of ReLU transformations of low-dimensional manifolds embedded in higher
 
 The inverted design is considerably more memory efficient.
 
-![](C:\Users\gavin\Desktop\img_classification\inverted block.png)
+<img src='inverted block.png'>
 
 Comparing of bottleneck and inverted residuals.
 
-![](C:\Users\gavin\Desktop\img_classification\comparing of bottleneck.png)
+<img src='comparing of bottleneck.png'>
 
 #### Channel shuffle for Group Convolution
 
@@ -106,5 +106,5 @@ To address the issue, a straightforward solution is to apply channel sparse conn
 
 If we allow group convolution to obtain input data from different groups , the input and output channels will be fully related. Specifically, for the feature map generated from the previous group layer, we can first divide the channels in each group into several subgroups, then feed each group in the next layer with different subgroups. 
 
-![](C:\Users\gavin\Desktop\img_classification\channel_shuffle.png)
+<img src='hannel_shuffle.png'>
 
