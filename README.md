@@ -214,29 +214,6 @@ Comparing of bottleneck and inverted residuals.
 <img src='/img/comparing of bottleneck.png'>
 
 
-| Type/Strike |  Filter shape | Input Size |
-| ------ | ------ | ------ | 
-| Conv2D/s=2 | 3 * 3 * 32 | 224 * 224 * 3 |
-| DWConv2D/s=1 | 3 * 3 * 32dw | 112 * 112 * 32 |
-| Conv2D/s=1 | 1 * 1 * 32 * 64 | 112 * 112 * 32 |
-| DWConv2D/s=2 | 3 * 3 * 64dw | 112 * 112 * 64 |
-| Conv2D/s=1 | 1 * 1 * 64 * 128 | 56 * 56 * 64 |
-| DWConv2D/s=1 | 3 * 3 * 128dw | 56 * 56 * 128 |
-| Conv2D/s=1 | 1 * 1 * 128 * 128 | 56 * 56 * 128 |
-| DWConv2D/s=2 | 3 * 3 * 128dw | 56 * 56 * 128 |
-| Conv2D/s=1 | 1 * 1 * 128 * 256 | 28 * 28 * 256 |
-| DWConv2D/s=1 | 3 * 3 * 256dw | 28 * 28 * 256 |
-| Conv2D/s=1 | 1 * 1 * 256 * 256 | 28 * 28 * 256 |
-| DWConv2D/s=2 | 3 * 3 * 256dw | 28 * 28 * 256 |
-| Conv2D/s=1 | 1 * 1 * 256 * 512 | 14 * 14 * 256 |
-| 5 * DWConv2D, Conv2D/s=1 | 3 * 3 * 512dw, 1 * 1 * 512 * 512 | 14 * 14 * 512 |
-| DWConv2D/s=2 | 3 * 3 * 512dw | 14 * 14 * 512 |
-| Conv2D/s=1 | 1 * 1 * 512 * 1024 | 7 * 7 * 512 |
-| DWConv2D/s=1 | 3 * 3 * 1024dw | 7 * 7 * 1024 |
-| Conv2D/s=1 | 1 * 1 * 1024 * 1024 | 7 * 7 * 1024 |
-| Pooling/FC |  |  |
-
-
 #### Channel shuffle for Group Convolution
 
 Modern convolutional neural networks usually consist of repeated building blocks with the same structure, such as *Xception* and *ResNeXt* introduce efficient depthwise separable convolutions or group convolutions into the building blocks to strike an excellent trade-off between representation capability and computational cost. However, both designs do not fully take the ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolutions into account, which require considerable complexity. For example, in ResNeXt only ![](https://latex.codecogs.com/gif.latex?3%20%5Ctimes%203) layers are equipped with group convolutions. As a result, for each residual unit in ResNeXt the pointwise convolutions occupy 93.4% multiplication-adds( cardinality = 32 as suggested in). In tiny networks, expensive pointwise convolutions result in limited number of channels to meet the complexity constraint, which might significantly damage the accuracy.
