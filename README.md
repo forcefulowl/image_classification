@@ -199,7 +199,7 @@ If we allow group convolution to obtain input data from different groups , the i
 ## Result
 
 | tricks using in model |  values of parameters | training time |accuracy |
-| ------ | ------ | ------ |
+| ------ | ------ | ------ | ------ |
 | depthwise separable conv | batch_size=32, lr-1 | 2:02:35.984546 |7|
 | depthwise separable conv | 短文本 | 中等文本 |
 | depthwise separable conv | 短文本 | 中等文本 |
