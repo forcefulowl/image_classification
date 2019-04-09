@@ -24,7 +24,7 @@ Depthwise convolution with one filter per input channel (input depth) can be wri
 where K is the depthwise convolutional kernel of size ![](https://latex.codecogs.com/gif.latex?D_%7BK%7D%20%5Ctimes%20D_%7BK%7D%20%5Ctimes%20M) where the ![](https://latex.codecogs.com/gif.latex?m_%7Bth%7D) filter in K is applied to the ![](https://latex.codecogs.com/gif.latex?m_%7Bth%7D) channel in F to produce the ![](https://latex.codecogs.com/gif.latex?m_%7Bth%7D) channel of the filtered output feature map G.
 
 
-![](C:\img\img_classification\depthwise separable convolution.png)
+<img src = '/img/depthwise separable convolution.png'>
 
 
 Depthwise convolution has a computational cost of
