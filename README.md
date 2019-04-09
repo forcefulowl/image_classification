@@ -106,5 +106,5 @@ To address the issue, a straightforward solution is to apply channel sparse conn
 
 If we allow group convolution to obtain input data from different groups , the input and output channels will be fully related. Specifically, for the feature map generated from the previous group layer, we can first divide the channels in each group into several subgroups, then feed each group in the next layer with different subgroups. 
 
-<img src='/img/hannel_shuffle.png'>
+<img src='/img/channel_shuffle.png'>
 
