@@ -17,6 +17,7 @@ start = datetime.datetime.now()
 
 tf.global_variables_initializer()
 
+
 img_width, img_height = 224, 224
 train_data_dir = "C:\\Users\gavin\Desktop\Train1_M"
 validation_data_dir = "C:\\Users\gavin\Desktop\Test1_M"
