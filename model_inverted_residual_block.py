@@ -17,6 +17,7 @@ models = None
 keras_utils = None
 '''
 
+
 start = datetime.datetime.now()
 
 tf.global_variables_initializer()
