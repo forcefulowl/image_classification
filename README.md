@@ -166,12 +166,13 @@ By expressing convolution as two step process of filtering and combining, there'
 
 |  values of parameters | training time | result |
 | ------ | ------ | ------ |
-| batch_size=32, lr=1, epochs=100 | 2:02:35.984546 |loss: 0.0496 - acc: 0.9844 - val_loss: 0.9146 - val_acc: 0.8437|
-| batch_size=32, lr=0.1, epochs=100 | 2:02:24.674883 |loss: 0.0167 - acc: 0.9938 - val_loss: 0.8037 - val_acc: 0.8592|
-| batch_size=32, lr=0.01, epochs=100 | 2:00:44.432700 |loss: 0.1524 - acc: 0.9481 - val_loss: 0.5204 - val_acc: 0.8420|
+| batch_size=32, lr=1, epochs=100 | 2:02:35.984546 | loss: 0.0496 - acc: 0.9844 - val_loss: 0.9146 - val_acc: 0.8437 |
+| batch_size=32, lr=0.1, epochs=100 | 2:02:24.674883 | loss: 0.0167 - acc: 0.9938 - val_loss: 0.8037 - val_acc: 0.8592 |
+| batch_size=32, lr=0.01, epochs=100 | 2:00:44.432700 | loss: 0.1524 - acc: 0.9481 - val_loss: 0.5204 - val_acc: 0.8420 |
 | batch_size=32, lr=0.001, epochs=100 | 1:59:59.366265 | loss: 0.5579 - acc: 0.8000 - val_loss: 0.6101 - val_acc: 0.7804 |
-| batch_size=16, lr=0.1, epochs=100 | 2:11:34.221687 |loss: 0.0326 - acc: 0.9896 - val_loss: 0.8072 - val_acc: 0.8539|
-| batch_size=8, lr=0.1, epochs=100 | 2:29:13.814567 |loss: 0.0488 - acc: 0.9836 - val_loss: 0.8756 - val_acc: 0.8473|
+| batch_size=16, lr=0.1, epochs=100 | 2:11:34.221687 | loss: 0.0326 - acc: 0.9896 - val_loss: 0.8072 - val_acc: 0.8539 |
+| batch_size=16, lr=0.01, epochs=100 | 2:13:38.293478 | loss: 0.1412 - acc: 0.9524 - val_loss: 0.5066 - val_acc: 0.8372 |
+| batch_size=8, lr=0.1, epochs=100 | 2:29:13.814567 | loss: 0.0488 - acc: 0.9836 - val_loss: 0.8756 - val_acc: 0.8473 |
 
 
 
