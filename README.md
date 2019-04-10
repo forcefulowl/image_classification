@@ -256,4 +256,7 @@ If we allow group convolution to obtain input data from different groups , the i
 | batch_size=16, lr=0.1, epochs=200 | 4:40:04.491828 |loss: 0.2473 - acc: 0.9078 - val_loss: 0.8477 - val_acc: 0.7829|
 
 
+#### ShuffleNet Unit
+
+
 
