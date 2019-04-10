@@ -258,5 +258,5 @@ If we allow group convolution to obtain input data from different groups , the i
 
 #### ShuffleNet Unit
 
-
+<img src='/img/shufflenet_unit.png'>
 
