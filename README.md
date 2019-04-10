@@ -262,3 +262,7 @@ Starting from the design principle of bottleneck unit. In its residual brach, fo
 
 <img src='/img/shufflenet_unit.png'>
 
+
+## TODO
+
+https://arxiv.org/pdf/1807.11164.pdf
