@@ -7,7 +7,6 @@ from keras import optimizers
 from keras.models import Model
 
 
-
 start = datetime.datetime.now()
 
 tf.global_variables_initializer()
