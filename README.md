@@ -316,7 +316,7 @@ Validation experiment for Guideline 2. Four values of group number g are tested,
 
 Validation experiment for Guideline 3. c denotes the number of channels for 1-fragment. The channel number in other fragmented structures is adjusted so taht the FLOPs is the same as 1-fragment.
 
-**4.Element-wise operations are non-negligible**
+** 4.Element-wise operations are non-negligible**
 
 <img src='/img/G4.png'>
 
@@ -331,4 +331,7 @@ Validation experiment for Guideline 4. The ReLU and shortcut operations are remo
 3. reduce the degree of fragmentation;
 
 4. reduce element-wise operations.
+
+**Channel Split**
+
 
