@@ -279,9 +279,6 @@ If we allow group convolution to obtain input data from different groups , the i
 <img src='/img/channel_shuffle.png'>
 
 
-|  values of parameters | training time | result |
-| ------ | ------ | ------ |
-| batch_size=16, lr=0.1, epochs=200 | 4:40:04.491828 |loss: 0.2473 - acc: 0.9078 - val_loss: 0.8477 - val_acc: 0.7829|
 
 
 #### ShuffleNet Unit
@@ -291,6 +288,17 @@ Starting from the design principle of bottleneck unit. In its residual brach, fo
 
 <img src='/img/shufflenet_unit.png'>
 
+**Sturcture of Model**
+
+|  Layer | Output size | Ksize | Stride | Repeat | Output channels(8 groups)|
+| ------ | ------ | ------ |
+| Image | 224^2 ||  | |
+
+
+**Result**
+|  values of parameters | training time | result |
+| ------ | ------ | ------ |
+| batch_size=16, lr=0.1, epochs=200 | 4:40:04.491828 |loss: 0.2473 - acc: 0.9078 - val_loss: 0.8477 - val_acc: 0.7829|
 
 ## TODO 
 
