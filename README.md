@@ -259,6 +259,22 @@ Bottleneck residual block transforming from k to k' channels, with stride = s an
 | h/s * w/s * tk | linear 1 * 1 conv2d | h/s * w/s * k' |
 
 
+**Structure of the model**
+
+| Input | Operator | expansion | output channels | t | s |
+| :-: | :-: | :-: | :-: | :-: | :-: | 
+| 224^2 * 3   | Conv2D | - | 32     | 1      |    2   |
+| 112^2 * 32  | bottleneck | 1 | 16 | 1      |    1   |
+| 112^2 * 16  | bottleneck | 6 | 24 | 2      |    2   |
+| 56^2 * 24   | bottleneck | 6 | 32 | 3      |    2   |
+| 28^2 * 32   | bottleneck | 6 | 64 | 4      |    2   |
+| 14^2 * 64   | bottleneck | 6 | 96 | 3      |    1   |
+| 14^2 * 96   | bottleneck | 6 | 160 | 3     |    2   |
+| 7^2 * 160   | bottleneck | 6 | 320 | 1     |    1   |
+| 7^2 * 320   | conv2d 1 * 1 | - | 1280 | 1     |      |
+| 7^2 * 1280  | avgpool/FC | - |  |     |    -   |
+
+
 #### Result
 
 |  values of parameters | training time | result |
