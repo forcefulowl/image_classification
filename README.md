@@ -250,11 +250,13 @@ Comparing of bottleneck and inverted residuals.
 
 **basic implementation structure**
 
+Bottleneck residual block transforming from k to k' channels, with stride = s and expansion factor t.
+
 |  Input | Operator | Output |
 | ------ | ------ | ------ |
-| h \times w \times k|  ||
-|  |  ||
-|  |  ||
+| h * w * k| 1 * 1 conv2d, ReLU6 | h * w * tk |
+| h * w * tk | 3 * 3 dw, s=s, ReLU6 | h/s * w/s * tk |
+| h/s * w/s * tk | linear 1 * 1 conv2d | h/s * w/s * k' |
 
 
 #### Result
