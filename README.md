@@ -104,15 +104,16 @@ A standard convolutional layer takes as input a ![](https://latex.codecogs.com/g
 
 The standard convolutional layer is parameterized by convolution kernel K of size ![](https://latex.codecogs.com/gif.latex?D_%7BK%7D%20%5Ctimes%20D_%7BK%7D%20%5Ctimes%20M%20%5Ctimes%20N) where ![](https://latex.codecogs.com/gif.latex?D_%7BK%7D) is the spatial dimension of the kernel assumed to be square and M is number of input channels and N is the number of output channels as defined previously. 
 
+Standard convolutions have the computational cost of:
+
+
+![](https://latex.codecogs.com/gif.latex?D_%7BK%7D%20%5Ccdot%20D_%7BK%7D%20%5Ccdot%20M%20%5Ccdot%20N%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D)
+
+where the computational cost depends multiplicatively on the number of input channels M, the number of output channels N, the kernel size ![](https://latex.codecogs.com/gif.latex?D_%7BK%7D%20%5Ctimes%20D_%7BK%7D) and the feature map size ![](https://latex.codecogs.com/gif.latex?D_%7BF%7D%20%5Ctimes%20D_%7BF%7D).
+
+The standard convolution operation has the effect of filtering features based on the convolutional kernels and combining features in order to produce a new representation. The filtering and combination steps can be split into two steps via the use of factorized convolutions called depthwise separable convolutions for substantial reduction in computational cost.
+
 Depthwise separable convolution are made up of two layers: depthwise convolutions and pointwise convolutions. Using depthwise convolutions to apply a single filter per input channel (input depth). Pointwise convolution, a simple ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolution, is then used to create a linear combination of the output of the depthwise layer.
-
-Depthwise convolution with one filter per input channel (input depth) can be written as:
-
-
-![](https://latex.codecogs.com/gif.latex?%5Csum_%7Bi%2Cj%7D%20K_%7Bi%2Cj%2Cm%7D%20%5Ccdot%20F_%7Bk&plus;i-1%2Cl&plus;j-1%2Cm%7D)
-
-
-where K is the depthwise convolutional kernel of size ![](https://latex.codecogs.com/gif.latex?D_%7BK%7D%20%5Ctimes%20D_%7BK%7D%20%5Ctimes%20M) where the ![](https://latex.codecogs.com/gif.latex?m_%7Bth%7D) filter in K is applied to the ![](https://latex.codecogs.com/gif.latex?m_%7Bth%7D) channel in F to produce the ![](https://latex.codecogs.com/gif.latex?m_%7Bth%7D) channel of the filtered output feature map G.
 
 
 <img src = '/img/depthwise separable convolution.png'>
@@ -141,6 +142,16 @@ By expressing convolution as two step process of filtering and combining, there'
 
 ![](https://latex.codecogs.com/gif.latex?%5Cfrac%7BD_%7BK%7D%20%5Ccdot%20D_%7BK%7D%20%5Ccdot%20M%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D%20&plus;%20M%20%5Ccdot%20N%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D%7D%7BD_%7BK%7D%20%5Ccdot%20D_%7BK%7D%20%5Ccdot%20M%20%5Ccdot%20N%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D%7D%20%3D%20%5Cfrac%7B1%7D%7BN%7D%20&plus;%20%5Cfrac%7B1%7D%7BD%5E2_%7BK%7D%7D)
 
+Although using Depthwise Separable Convolution make the model already small and low latency, many times a specific use case or application may require the model to be smaller and faster. In order to construct these smaller and less computationally expensive models, I also set two hyper-parameters: width multiplier and resolution multiplier. The role of the width multiplier ![](https://latex.codecogs.com/gif.latex?%5Calpha) is to thin a network uniformly at each layer. For a give layer and width multiplier ![](https://latex.codecogs.com/gif.latex?%5Calpha), the number of input channels M becomes ![](https://latex.codecogs.com/gif.latex?%5Calpha)M and the number of output channels N becomes ![](https://latex.codecogs.com/gif.latex?%5Calpha)N.
+
+The computational cost of a depthwise separable convolution with width multiplier ![](https://latex.codecogs.com/gif.latex?%5Calpha) is:
+
+
+![](https://latex.codecogs.com/gif.latex?D_%7BK%7D%20%5Ccdot%20D_%7BK%7D%20%5Ccdot%20%5Calpha%20M%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D%20&plus;%20%5Calpha%20M%20%5Ccdot%20%5Calpha%20N%20%5Ccdot%20D_%7BF%7D%20%5Ccdot%20D_%7BF%7D)
+
+where ![](https://latex.codecogs.com/gif.latex?%5Calpha%20%5Cin%20%280%2C%201%5D) witth typical settings of 1, 0.75, 0.5 and 0.25. Width multiplier has the effect of reducing computational cost and the number of parameters quadratically by roughly ![](https://latex.codecogs.com/gif.latex?%5Calpha%20%5E2). 
+
+**The structure of the model**
 
 
 | Type/Strike |  Filter shape | Input Size |
