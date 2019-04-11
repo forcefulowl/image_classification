@@ -334,4 +334,10 @@ Validation experiment for Guideline 4. The ReLU and shortcut operations are remo
 
 **Channel Split**
 
+<img src='/img/shufflenet_v2'>
+
+At the begining of each unit, the input of c feature channels are split into two braches with c - c' and c' channels, respectively. Following G3, one branch remains as identity. The other branch consist of three convolutions with the same input and output channels to satisfy G1. The two ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolutions are no longer group-wise. This is partially to follow G2, and partially because the split operation already produces two groups.
+
+After convolution ,the two branches are concatenated. So, the number of channels keeps the same(G1). The same 'channel shuffle' operation is then used to enable information communication between the two branches. After the shuffling, the next unit begins. Note that the 'Add' operation no longer exists. Element-wise operations like ReLU and depthwise convolutions exist only in one branch. Also, the three successive elementwise operations, 'Concat', 'Channel Shuffle' and 'Channel Split', are merged into a single element-wise operation. These changes are beneficial according to G4.
+
 
