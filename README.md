@@ -302,17 +302,25 @@ https://arxiv.org/pdf/1807.11164.pdf
 
 <img src='/img/G1.png'>
 
+Validation experiment for Guideline 1. Four different ratios of number of input/output channels(c1 and c2) are tested, while the total FLOPs under the four ratios is fixed by carying the number of channels.
+
 **2. Excessive group convolution increases MAC**
 
 <img src='/img/G2.png'>
+
+Validation experiment for Guideline 2. Four values of group number g are tested, while the total FLOPs under the four values is fixed by varying the total channel number c.
 
 **3. Network fragmentation reduces degree of parallelism**
 
 <img src='/img/G3.png'>
 
+Validation experiment for Guideline 3. c denotes the number of channels for 1-fragment. The channel number in other fragmented structures is adjusted so taht the FLOPs is the same as 1-fragment.
+
 **4.Element-wise operations are non-negligible**
 
 <img src='/img/G4.png'>
+
+Validation experiment for Guideline 4. The ReLU and shortcut operations are removed from the bottleneck unit, separately. c is the number of channels in unit.
 
 **Conclusion and Discussions**
 
