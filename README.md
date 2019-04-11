@@ -223,6 +223,7 @@ For each residual function ![](https://latex.codecogs.com/gif.latex?F), using a 
 
 **Linear Bottlenecks**
 
+
 Comparing of Depthwise Separable Convolution and Linear Bottleneck.
 
 <img src='/img/comparing of mobilenet v1_v2.png'>
@@ -237,6 +238,7 @@ Using linear layers is crucial as it prevents non-linearities from destroying to
 Examples of ReLU transformations of low-dimensional manifolds embedded in higher-dimensional spaces. In these examples the initial spiral is embedded into an n-dimensional space using random matrix T followed by ReLU, and then projected back to the 2D space using $T^{-1}$. In examples above n = 2,3 result in information loss where certain points of the manifold collapse into each other, while for n=15 to 30 the transformation is highly non-convex.
 
 **Inverted residuals**
+
 
 The inverted design is considerably more memory efficient.
 
