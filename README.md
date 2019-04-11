@@ -1,5 +1,9 @@
 
-# image_classification
+# Image_classification
+
+## Introduction
+
+Convolutional neural networks ahve become famous in cmoputer vision ever since *AlexNet* popularized deep convolutional neural networks by winning IamgeNet Challenge: ILSVRC 2012. The general trend has been to make deeper and more complicated networks in roder to achieve higher accuracy. However, these advances to improve accuracy are not necessarily making networks more efficient with respect to size and spped. In many real world applications such as robotics, self-driving, the recognition tasks need to be carried out in a timely fashion on a computationally limited platform. That's inspire me to build some effient convolutional neural networks which can be used on Mobile/portable device. 
 
 ## Data/Preprocessing Data
 
