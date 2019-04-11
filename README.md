@@ -248,6 +248,14 @@ Comparing of bottleneck and inverted residuals.
 
 <img src='/img/comparing of bottleneck.png'>
 
+**basic implementation structure**
+
+|  Input | Operator | Output |
+| ------ | ------ | ------ |
+| ![](https://latex.codecogs.com/gif.latex?h%20%5Ctimes%20w%20%5Ctimes%20k) |  ||
+|  |  ||
+|  |  ||
+
 
 #### Result
 
