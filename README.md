@@ -370,7 +370,7 @@ Validation experiment for Guideline 4. The ReLU and shortcut operations are remo
 
 **Channel Split**
 
-<img src='/img/shufflenet_v2'>
+<img src='/img/shufflenet_v2.png'>
 
 At the begining of each unit, the input of c feature channels are split into two braches with c - c' and c' channels, respectively. Following G3, one branch remains as identity. The other branch consist of three convolutions with the same input and output channels to satisfy G1. The two ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) convolutions are no longer group-wise. This is partially to follow G2, and partially because the split operation already produces two groups.
 
