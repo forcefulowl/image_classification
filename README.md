@@ -188,6 +188,11 @@ where ![](https://latex.codecogs.com/gif.latex?%5Calpha%20%5Cin%20%280%2C%201%5D
 | batch_size=16, lr=0.1, epochs=100 | 2:11:34.221687 | loss: 0.0326 - acc: 0.9896 - val_loss: 0.8072 - val_acc: 0.8539 |
 | batch_size=16, lr=0.01, epochs=100 | 2:13:38.293478 | loss: 0.1412 - acc: 0.9524 - val_loss: 0.5066 - val_acc: 0.8372 |
 | batch_size=8, lr=0.1, epochs=100 | 2:29:13.814567 | loss: 0.0488 - acc: 0.9836 - val_loss: 0.8756 - val_acc: 0.8473 |
+| batch_size=32, lr=0.1, epochs=100, alpha=0.75 | 1:59:59.084560 | loss: 0.0336 - acc: 0.9878 - val_loss: 0.7870 - val_acc: 0.8535 |
+| batch_size=32, lr=0.1, epochs=100, alpha=0.5 | 2:00:03.366160 | loss: 0.0554 - acc: 0.9798 - val_loss: 0.6174 - val_acc: 0.8488 |
+| batch_size=32, lr=0.1, epochs=100, init_w=xaveir | 2:01:36.719090 | loss: 0.3441 - acc: 0.8718 - val_loss: 0.7564 - val_acc: 0.7605 |
+
+
 
 
 
@@ -320,6 +325,7 @@ Starting from the design principle of bottleneck unit. In its residual brach, fo
 
 |  values of parameters | training time | result |
 | ------ | ------ | ------ |
+| batch_size=16, lr=1, epochs=500 | 9:59:17.423318 | loss: 0.4489 - acc: 0.8302 - val_loss: 0.6918 - val_acc: 0.7716|
 | batch_size=16, lr=0.1, epochs=200 | 4:40:04.491828 |loss: 0.2473 - acc: 0.9078 - val_loss: 0.8477 - val_acc: 0.7829|
 
 ## TODO 
