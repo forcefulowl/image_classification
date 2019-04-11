@@ -286,11 +286,15 @@ If we allow group convolution to obtain input data from different groups , the i
 
 #### ShuffleNet Unit
 
-Starting from the design principle of bottleneck unit. In its residual brach, for the $3 \times 3$ layers, applying a computational economical $3 \times 3$ depthwise convolution on the bottleneck feature map. Then, replacing the first $1 \times 1$ layer with pointwise group convolution followed by a channel shuffle operation. The purpose of the second pointwise group convolution is to recover the channel dimension to match the shortcut path.
+
+Starting from the design principle of bottleneck unit. In its residual brach, for the ![](https://latex.codecogs.com/gif.latex?3%20%5Ctimes%203) layers, applying a computational economical ![](https://latex.codecogs.com/gif.latex?3%20%5Ctimes%203) depthwise convolution on the bottleneck feature map. Then, replacing the first ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%201) layer with pointwise group convolution followed by a channel shuffle operation. The purpose of the second pointwise group convolution is to recover the channel dimension to match the shortcut path. For simplicity, no apply an extra channel shuffle operation after the second pointwise layer as it results in comparable scores. The usage of batch normalization(BN) and nonlinearity is similar, except not use ReLU after depthwise convolution as suggested by *Xception*. 
 
 <img src='/img/shufflenet_unit.png'>
 
 
-## TODO
+## TODO 
 
 https://arxiv.org/pdf/1807.11164.pdf
+
+
+
