@@ -252,7 +252,7 @@ Comparing of bottleneck and inverted residuals.
 
 |  Input | Operator | Output |
 | ------ | ------ | ------ |
-| ![](https://latex.codecogs.com/gif.latex?h%20%5Ctimes%20w%20%5Ctimes%20k) |  ||
+| h \times w \times k|  ||
 |  |  ||
 |  |  ||
 
