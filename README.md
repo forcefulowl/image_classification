@@ -20,6 +20,9 @@ MEL: 1113
 NV: 6705
 VASC: 142
 ```
+*Imbalanced Data*
+
+during `fit_generator`, set `class_weight='auto'`
 
 The format of raw data is as follows:
 
