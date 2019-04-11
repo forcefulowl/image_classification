@@ -300,11 +300,19 @@ https://arxiv.org/pdf/1807.11164.pdf
 
 **1. Equal channel width minimized memory access cost(MAC)**
 
+<img src='/img/G1.png'>
+
 **2. Excessive group convolution increases MAC**
+
+<img src='/img/G2.png'>
 
 **3. Network fragmentation reduces degree of parallelism**
 
+<img src='/img/G3.png'>
+
 **4.Element-wise operations are non-negligible**
+
+<img src='/img/G4.png'>
 
 **Conclusion and Discussions**
 
