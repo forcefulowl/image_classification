@@ -70,7 +70,7 @@ data_datagen = ImageDataGenerator(
 `width_shift_range`: fraction of total width.
 `height_shift_range`: fraction of total height.
 `rotation_range`: Degree range for random rotations.
-`validation_split`: Split the dataset into 70% train and 30% val.
+`validation_split`: Split the dataset into 70% train and 30% val. It will shuffle the data.
 
 Then achieve ImageGenerator:
 
