@@ -291,8 +291,13 @@ Starting from the design principle of bottleneck unit. In its residual brach, fo
 **Sturcture of Model**
 
 |  Layer | Output size | Ksize | Stride | Repeat | Output channels(8 groups)|
-| ------ | ------ | ------ |
-| Image | 224^2 ||  | |
+| ------ | ------ | ------ | ------ | ------ | ------ |
+|  Image | 224^2  |        |        |        |    3   |
+|  Conv1<br>Pool | 112^2<br>56^2  | 3 * 3<br>3 * 3 |    2<br>2    |    1    |    24   |
+|  Stage2        | 28^2<br>28^2   |                |    2<br>1    |  1<br>3 |  384<br>384 |
+|  Stage3        | 14^2<br>14^2   |                |    2<br>1    |  1<br>7 |  768<br>768 |
+|  Stage4        | 7^2<br>7^2     |                |    2<br>1    |  1<br>3 |  1536<br>1536 |
+|  GlobalPool/FC        |    |                |        |   |   |
 
 
 **Result**
