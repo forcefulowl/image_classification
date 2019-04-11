@@ -296,5 +296,23 @@ Starting from the design principle of bottleneck unit. In its residual brach, fo
 
 https://arxiv.org/pdf/1807.11164.pdf
 
+#### Practical Guidelines for Efficient Network Design
 
+**1. Equal channel width minimized memory access cost(MAC)**
+
+**2. Excessive group convolution increases MAC**
+
+**3. Network fragmentation reduces degree of parallelism**
+
+**4.Element-wise operations are non-negligible**
+
+**Conclusion and Discussions**
+
+1. use 'balanced' convolutions( equal channel width);
+
+2. be aware of the cost of using group convolution;
+
+3. reduce the degree of fragmentation;
+
+4. reduce element-wise operations.
 
