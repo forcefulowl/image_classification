@@ -1,5 +1,3 @@
-"""Enables dynamic setting of underlying Keras module.
-"""
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -91,5 +89,3 @@ def correct_pad(backend, inputs, kernel_size):
 
     return ((correct[0] - adjust[0], correct[0]),
             (correct[1] - adjust[1], correct[1]))
-
-__version__ = '1.0.6'
