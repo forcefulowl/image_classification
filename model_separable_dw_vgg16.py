@@ -122,18 +122,7 @@ def depthwise_conv_block(inputs, pointwise_conv_filters, alpha,
 model = MobileNet(input_shape=(img_width, img_height, 3), pooling='avg')
 
 x = model.output
-'''
-x = layers.Dropout(1e-3)(x)
-x = layers.Dense(1024, kernel_initializer='he_uniform')(x)
-x = layers.BatchNormalization(axis=-1)(x)
-x = layers.Activation('relu')(x)
-x = layers.Dropout(0.5)(x)
-x = layers.Dense(1024, kernel_initializer='he_uniform')(x)
-x = layers.BatchNormalization(axis=-1)(x)
-x = layers.Activation('relu')(x)
-x = layers.Dropout(0.5)(x)
-x = layers.Dense(7, kernel_initializer='he_uniform', activation="softmax")(x)
-'''
+
 shape = (1, 1, 1024)
 x = layers.Reshape(shape)(x)
 x = layers.Dropout(1e-3)(x)
