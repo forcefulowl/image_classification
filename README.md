@@ -331,7 +331,7 @@ Starting from the design principle of bottleneck unit. In its residual brach, fo
 | batch_size=16, lr=1, epochs=500 | 9:59:17.423318 | loss: 0.4489 - acc: 0.8302 - val_loss: 0.6918 - val_acc: 0.7716|
 | batch_size=16, lr=0.1, epochs=200 | 4:40:04.491828 |loss: 0.2473 - acc: 0.9078 - val_loss: 0.8477 - val_acc: 0.7829|
 
-## TODO 
+## 
 
 https://arxiv.org/pdf/1807.11164.pdf
 
