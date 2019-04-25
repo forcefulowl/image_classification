@@ -392,14 +392,14 @@ epochs = 100
 optimizier = adadelta, lr = 1, decay = 0
 ```
 
-|  model | Params | result | training time |
-| :-: | :-: | :-: | :-: |
-| ResNet50 | 23M | 78.45% | 2:46:23 |
+|  model | Params | result | training time | prediction time |
+| :-: | :-: | :-: | :-: | :-: |
+| ResNet50 | 23M | 78.45% | 2:46:23 | 00:03:57 |
 | Separable_dw | 12M | 76.83% | 2:27:33 |
-| Separable_dw_linear | 12M | 77.47% | 2:24:06 |
-| inverted_residual | 2.2M | 77.28% | 2:32:11 |
+| Separable_dw_linear | 12M | 77.47% | 2:24:06 | 00:03:43 |
+| inverted_residual | 2.2M | 77.28% | 2:32:11 | 00:03:35 |
 | shuffle_unit | 0.9M | 78.25% | 2:49:22 |
-| shuffle_unit_without_shuffle | 0.9M | 80.22% | 2:46:05 |
+| shuffle_unit_without_shuffle | 0.9M | 80.22% | 2:46:05 | 00:05:54 |
 
 All models with
 
