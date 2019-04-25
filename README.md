@@ -380,3 +380,38 @@ At the begining of each unit, the input of c feature channels are split into two
 After convolution ,the two branches are concatenated. So, the number of channels keeps the same(G1). The same 'channel shuffle' operation is then used to enable information communication between the two branches. After the shuffling, the next unit begins. Note that the 'Add' operation no longer exists. Element-wise operations like ReLU and depthwise convolutions exist only in one branch. Also, the three successive elementwise operations, 'Concat', 'Channel Shuffle' and 'Channel Split', are merged into a single element-wise operation. These changes are beneficial according to G4.
 
 
+
+
+# Compare Base ResNet50
+
+All models with
+
+```
+batch_size = 8
+epochs = 100
+optimizier = adadelta, lr = 1, decay = 0
+```
+
+|  model | Params | result | training time |
+| ------ | ------ | ------ |
+| ResNet50 | 23M | 78.45% | 2:46:23 |
+| Separable_dw | 12M | 76.83% | 2:27:33 |
+| Separable_dw_linear | 12M | 77.47% | 2:24:06 |
+| inverted_residual | 2.2M | 77.28% | 2:32:11 |
+| shuffle_unit | 0.9M | 78.25% | 2:49:22 |
+| shuffle_unit_without_shuffle | 0.9M | 80.22% | 2:46:05 |
+
+All models with
+
+```
+batch_size = 8
+epochs = 100
+optimizier = adadelta, lr = 1, decay = 0.05
+```
+
+|  model | Params | result | training time |
+| ------ | ------ | ------ |
+| ResNet50 | 23M | 78.52% | 2:47:40 |
+| inverted_residual | 2.2M | 77.35% | 2:32:25 |
+| shuffle_unit | 0.9M | 75.24% | 2:50:35 |
+| shuffle_unit_without_shuffle | 0.9M | 76.24% | 2:47:31 |
