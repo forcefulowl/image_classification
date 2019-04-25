@@ -12,7 +12,7 @@ import image_utils
 from image_utils import decode_predictions
 from image_utils import _obtain_input_shape
 
-from keras.layers import Input
+
 from keras import layers
 from keras.models import Model
 from keras import backend
@@ -48,27 +48,15 @@ def MobileNetV2(input_shape=None,
                 classes=7,
                 **kwargs):
 
-    rows = input_shape[0]
-    cols = input_shape[1]
 
-    if rows == cols and rows in [96, 128, 160, 192, 224]:
-        default_size = rows
-    else:
-        default_size = 224
 
     input_shape = _obtain_input_shape(input_shape,
-                                      default_size=default_size,
+                                      default_size=224,
                                       min_size=32,
                                       data_format='channels_last',
                                       require_flatten=include_top,
                                       weights=weights)
 
-    if backend.image_data_format() == 'channels_last':
-        row_axis, col_axis = (0, 1)
-    else:
-        row_axis, col_axis = (1, 2)
-    rows = input_shape[row_axis]
-    cols = input_shape[col_axis]
 
     if input_tensor is None:
         img_input = layers.Input(shape=input_shape)
@@ -166,8 +154,7 @@ def MobileNetV2(input_shape=None,
 
     inputs = img_input
     # Create model.
-    model = Model(inputs, x,
-                         name='mobilenetv2_%0.2f_%s' % (alpha, rows))
+    model = Model(inputs, x)
 
 
     return model
