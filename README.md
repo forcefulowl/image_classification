@@ -393,7 +393,7 @@ optimizier = adadelta, lr = 1, decay = 0
 ```
 
 |  model | Params | result | training time |
-| ------ | ------ | ------ |
+| :-: | :-: | :-: | :-: |
 | ResNet50 | 23M | 78.45% | 2:46:23 |
 | Separable_dw | 12M | 76.83% | 2:27:33 |
 | Separable_dw_linear | 12M | 77.47% | 2:24:06 |
@@ -410,7 +410,7 @@ optimizier = adadelta, lr = 1, decay = 0.05
 ```
 
 |  model | Params | result | training time |
-| ------ | ------ | ------ |
+| :-: | :-: | :-: | :-: |
 | ResNet50 | 23M | 78.52% | 2:47:40 |
 | inverted_residual | 2.2M | 77.35% | 2:32:25 |
 | shuffle_unit | 0.9M | 75.24% | 2:50:35 |
